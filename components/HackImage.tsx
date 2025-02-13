@@ -4,11 +4,11 @@ import Image from 'next/image';
 type BookCoverVariant = 'extraSmall' | 'small' | 'medium' | 'regular' | 'wide';
 
 const widthVariantStyles: Record<BookCoverVariant, string> = {
-  extraSmall: 'book-cover_extra_small',
+  extraSmall: 'hack-image_extra_small',
   small: 'book-cover _small',
-  medium: 'book-cover_medium',
-  regular: 'book-cover_regular',
-  wide: 'book-cover_wide',
+  medium: 'hack-image_medium',
+  regular: 'hack-image_regular',
+  wide: 'hack-image_wide',
 };
 
 interface Props {
@@ -26,7 +26,7 @@ const HackImage = ({ className, variant = 'regular', imageUrl }: Props) => {
         className,
       )}
     >
-      <Image src={imageUrl} alt="" fill className="object-fill"></Image>
+      <Image src={imageUrl} alt="" fill className="object-cover"></Image>
     </div>
   );
 };

@@ -1,6 +1,98 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-ibm-plex-sans: IBM Plex Sans, sans-serif;
+  --font-bebas-neue: var(--bebas-neue);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-primary: #e7c9a5;
+  --color-primary-admin: #25388c;
+
+  --color-green-100: #ecfdf3;
+  --color-green-400: #4c7b62;
+  --color-green-500: #2cc171;
+  --color-green-800: #027a48;
+  --color-green: #027a48;
+
+  --color-red-400: #f46f70;
+  --color-red-500: #e27233;
+  --color-red-800: #ef3a4b;
+  --color-red: #ef3a4b;
+
+  --color-blue-100: #0089f1;
+
+  --color-light-100: #d6e0ff;
+  --color-light-200: #eed1ac;
+  --color-light-300: #f8f8ff;
+  --color-light-400: #edf1f1;
+  --color-light-500: #8d8d8d;
+  --color-light-600: #f9fafb;
+  --color-light-700: #e2e8f0;
+  --color-light-800: #f8fafc;
+
+  --color-dark-100: #16191e;
+  --color-dark-200: #3a354e;
+  --color-dark-300: #232839;
+  --color-dark-400: #1e293b;
+  --color-dark-500: #0f172a;
+  --color-dark-600: #333c5c;
+  --color-dark-700: #464f6f;
+  --color-dark-800: #1e2230;
+
+  --color-gray-100: #cbd5e1;
+
+  --breakpoint-xs: 480px;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --background-image-pattern: url('/images/pattern.webp');
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   :root {
@@ -29,15 +121,15 @@
 
 @layer components {
   .form-btn {
-    @apply bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base !important;
+    @apply bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base;
   }
 
   .form-input {
-    @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300 !important;
+    @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300;
   }
 
-  /* Hack Card */
   .hack-title {
+    /* Hack Card */
     @apply mt-2 line-clamp-1 text-base font-semibold text-white xs:text-xl;
   }
 
@@ -53,17 +145,8 @@
     @apply bg-dark-600 mt-3 min-h-14 w-full font-bebas-neue text-base text-primary;
   }
 
-  /* Borrowed Hack */
-  .borrowed-hack {
-    @apply gradient-vertical p-5 rounded-2xl xs:w-min w-full relative;
-  }
-
-  .borrowed-hack_cover {
-    @apply py-4 lg:px-16 px-10 flex justify-center items-center w-full rounded-lg;
-  }
-
-  /* Hack Image */
   .hack-image_extra_small {
+    /* Hack Image */
     @apply w-[28.95px] h-10;
   }
 
@@ -85,48 +168,52 @@
 
   /* Hack Overview */
   .hack-overview {
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 text-light-100;
-  }
+    @apply max-w-max flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 text-light-100;
 
-  .hack-overview h1 {
-    @apply text-5xl font-semibold text-white md:text-7xl;
+    & h1 {
+      @apply text-4xl font-semibold text-white md:text-7xl;
+    }
   }
 
   .hack-info {
-    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl;
+    @apply mt-7 flex flex-col flex-wrap gap-4 text-xl;
   }
 
   .hack-description {
     @apply mt-2 text-justify text-xl text-light-100;
   }
 
-  .hack-overview_btn {
-    @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full !important;
+  .hack-date {
+    @apply text-sm text-right text-light-200;
   }
 
-  /* Card */
+  .hack-overview_btn {
+    @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full;
+  }
+
   .card-list {
+    /* Card */
     @apply mt-10 flex flex-wrap gap-4 max-xs:justify-between xs:gap-6;
   }
 
   .card {
-    @apply py-6 px-5 flex-auto basis-sm md:basis-md lg:basis-lg flex flex-col items-center gap-6 md:gap-8 text-light-100 border border-light-100 rounded-md shadow-md shadow-light-100;
+    @apply flex-auto basis-2xs max-w-max h-fit flex items-center gap-6 md:gap-8 text-light-100 border border-light-500 rounded-xl shadow-sm shadow-light-500 overflow-hidden;
   }
 
   .card-info {
-    @apply flex flex-col flex-wrap gap-4 text-base;
+    @apply py-4 px-4 flex flex-col flex-wrap gap-3 text-base;
   }
 
   .card-description {
-    @apply mt-2 text-justify text-light-100;
+    @apply line-clamp-3 text-justify text-light-100;
   }
 
   .card-date {
     @apply text-sm text-right text-light-200;
   }
 
-  /* File Upload */
   .upload-btn {
+    /* File Upload */
     @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
   }
 
@@ -138,18 +225,86 @@
     @apply rounded-full bg-green-800 p-0.5 text-center font-bebas-neue text-[8px] font-bold leading-none text-light-100;
   }
 
-  /* Search */
   .search {
+    /* Search */
     @apply relative mt-10 flex min-h-14 w-full items-center rounded-xl bg-dark-300 px-4;
   }
 
   .search-input {
-    @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none !important;
+    @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none;
   }
 
-  /* Hack Receipt */
-  .hack-receipt_admin-btn {
-    @apply bg-light-300 rounded-md text-primary-admin font-semibold hover:bg-light-300/80 !important;
+  .hack-ticket-circles {
+    @apply absolute inset-x-0 -bottom-6 flex flex-row gap-1.5;
+  }
+
+  .not-found-btn {
+    @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-dark-100 text-xl hover:bg-primary/90 min-h-12;
+  }
+
+  .pagination-btn_light {
+    @apply bg-light-300 text-dark-300 hover:bg-light-300/70;
+  }
+
+  .pagination-btn_dark {
+    @apply bg-dark-300 hover:bg-dark-100;
+  }
+
+  .select-trigger {
+    /* Sort */
+    @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100;
+  }
+
+  .select-content {
+    @apply bg-dark-300 text-light-100 border-dark-100;
+  }
+
+  .select-item {
+    @apply focus:bg-dark-600 focus:text-light-100;
+  }
+
+  .auth-container {
+    /* Auth */
+    @apply relative flex flex-col-reverse text-light-100 sm:flex-row;
+  }
+
+  .auth-form {
+    @apply my-auto flex h-full min-h-screen flex-1 items-center bg-pattern bg-cover bg-top bg-dark-100 px-5 py-10;
+  }
+
+  .auth-box {
+    @apply gradient-vertical mx-auto flex max-w-xl flex-col gap-6 rounded-lg p-10;
+  }
+
+  .auth-illustration {
+    @apply sticky h-40 w-full sm:top-0 sm:h-screen sm:flex-1;
+  }
+
+  .root-container {
+    /* Root */
+    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-cover bg-top bg-dark-100 px-5 xs:px-10 md:px-16;
+  }
+
+  .hack-details {
+    /* Hack Details */
+    @apply lg:mt-36 mt-16 mb-20 flex flex-col gap-16 lg:flex-row;
+
+    & h3 {
+      @apply text-xl font-semibold text-primary;
+    }
+  }
+
+  .library {
+    /* Library */
+    @apply mx-auto flex max-w-xl w-full flex-col text-center;
+  }
+
+  .library-subtitle {
+    @apply text-lg font-semibold uppercase text-light-100;
+  }
+
+  .library-title {
+    @apply mt-2 text-3xl font-semibold text-white xs:text-5xl;
   }
 
   /* Hack Ticket */
@@ -177,10 +332,6 @@
     @apply absolute -right-3.5 top-1/2 size-7 -translate-y-1/2 rounded-full bg-black;
   }
 
-  .hack-ticket-circles {
-    @apply absolute inset-x-0 -bottom-6 flex flex-row gap-1.5;
-  }
-
   /* Not Found */
   #not-found {
     @apply flex justify-center items-center flex-col text-center w-full;
@@ -194,151 +345,24 @@
     @apply text-light-100 w-[360px] mt-1;
   }
 
-  .not-found-btn {
-    @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-dark-100 text-xl hover:bg-primary/90 min-h-12 !important;
-  }
-
   /* Pagination */
   #pagination {
     @apply flex flex-row justify-end gap-3;
   }
 
-  .pagination-btn_light {
-    @apply bg-light-300 text-dark-300 hover:bg-light-300/70 !important;
-  }
-
-  .pagination-btn_dark {
-    @apply bg-dark-300 hover:bg-dark-100 !important;
-  }
-
   #pagination p {
     @apply text-sm inline-flex items-center font-semibold px-4 py-1.5 rounded-md text-center;
   }
-
-  /* Sort */
-  .select-trigger {
-    @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100 !important;
-  }
-
-  .select-content {
-    @apply bg-dark-300 text-light-100 border-dark-100 !important;
-  }
-
-  .select-item {
-    @apply focus:bg-dark-600 focus:text-light-100 !important;
-  }
 }
 
-@layer utilities {
-  .gradient-vertical {
-    background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
-  }
-
-  .gradient-gray {
-    background: linear-gradient(270deg, #37363a 0%, #353637 100%);
-  }
-
-  .gradient-blue {
-    background: linear-gradient(180deg, #232839 0%, #12141d 100%);
-  }
-
-  /* Auth */
-  .auth-container {
-    @apply relative flex flex-col-reverse text-light-100 sm:flex-row;
-  }
-
-  .auth-form {
-    @apply my-auto flex h-full min-h-screen flex-1 items-center bg-pattern bg-cover bg-top bg-dark-100 px-5 py-10;
-  }
-
-  .auth-box {
-    @apply gradient-vertical mx-auto flex max-w-xl flex-col gap-6 rounded-lg p-10;
-  }
-
-  .auth-illustration {
-    @apply sticky h-40 w-full sm:top-0 sm:h-screen sm:flex-1;
-  }
-
-  /* Root */
-  .root-container {
-    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-cover bg-top bg-dark-100 px-5 xs:px-10 md:px-16;
-  }
-
-  /* Hack Details */
-  .hack-details {
-    @apply lg:mt-36 mt-16 mb-20 flex flex-col gap-16 lg:flex-row;
-  }
-
-  .hack-details h3 {
-    @apply text-xl font-semibold text-primary;
-  }
-
-  /* Library */
-  .library {
-    @apply mx-auto flex max-w-xl w-full flex-col text-center;
-  }
-
-  .library-subtitle {
-    @apply text-lg font-semibold uppercase text-light-100;
-  }
-
-  .library-title {
-    @apply mt-2 text-3xl font-semibold text-white xs:text-5xl;
-  }
+@utility gradient-vertical {
+  background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+@utility gradient-gray {
+  background: linear-gradient(270deg, #37363a 0%, #353637 100%);
+}
+
+@utility gradient-blue {
+  background: linear-gradient(180deg, #232839 0%, #12141d 100%);
 }

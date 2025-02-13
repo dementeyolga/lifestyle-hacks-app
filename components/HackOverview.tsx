@@ -13,7 +13,7 @@ const HackOverview = ({ image, title, text, link, date }: Hack) => {
               {link}
             </a>
           )}
-          {date && <p className="font-semibold text-light-200">{date}</p>}
+          {date && <p className="hack-date">{date}</p>}
         </div>
       </div>
 
