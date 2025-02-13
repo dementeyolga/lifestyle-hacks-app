@@ -11,7 +11,7 @@ const HacksList = ({ title, hacks, containerClassName }: Props) => {
     <section className={containerClassName}>
       <h2 className="font-bebas-neue text-4xl text-light-100">{title}</h2>
 
-      <ul className="hack-list">
+      <ul className="card-list">
         {hacks.map((hack) => (
           <HackCard key={hack.id} {...hack} />
         ))}

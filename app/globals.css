@@ -83,14 +83,9 @@
     @apply xs:w-[296px] w-[256px] xs:h-[404px] h-[354px];
   }
 
-  /* Hacks List */
-  .hack-list {
-    @apply mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10;
-  }
-
   /* Hack Overview */
   .hack-overview {
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8;
+    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 text-light-100;
   }
 
   .hack-overview h1 {
@@ -98,7 +93,7 @@
   }
 
   .hack-info {
-    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl text-light-100;
+    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl;
   }
 
   .hack-description {
@@ -107,6 +102,27 @@
 
   .hack-overview_btn {
     @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full !important;
+  }
+
+  /* Card */
+  .card-list {
+    @apply mt-10 flex flex-wrap gap-4 max-xs:justify-between xs:gap-6;
+  }
+
+  .card {
+    @apply py-6 px-5 flex-auto basis-sm md:basis-md lg:basis-lg flex flex-col items-center gap-6 md:gap-8 text-light-100 border border-light-100 rounded-md shadow-md shadow-light-100;
+  }
+
+  .card-info {
+    @apply flex flex-col flex-wrap gap-4 text-base;
+  }
+
+  .card-description {
+    @apply mt-2 text-justify text-light-100;
+  }
+
+  .card-date {
+    @apply text-sm text-right text-light-200;
   }
 
   /* File Upload */
