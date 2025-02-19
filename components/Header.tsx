@@ -13,7 +13,7 @@ const Header = () => {
       <Link href="/" className="flex items-center gap-1 text-light-100">
         <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
 
-        <span className="font-bebas-neue leading-none tracking-wide">
+        <span className="font-nunito-sans font-medium leading-none tracking-wide">
           Lifestyle <br /> Hacks
         </span>
       </Link>

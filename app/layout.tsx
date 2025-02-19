@@ -12,11 +12,11 @@ const ibmPlexSans = localFont({
   ],
 });
 
-const bebasNeue = localFont({
+const nunitoSans = localFont({
   src: [
-    { path: '/fonts/BebasNeue-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '/fonts/NunitoSans-Regular.ttf', weight: '400', style: 'normal' },
   ],
-  variable: '--bebas-neue',
+  variable: '--nunito-sans',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body
-        className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}
+        className={`${ibmPlexSans.className} ${nunitoSans.variable} antialiased`}
       >
         {children}
       </body>

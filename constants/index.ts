@@ -90,3 +90,15 @@ export const hacksList: Hack[] = [
     date: '2025-02-03',
   },
 ];
+
+export const FIELD_NAMES = {
+  fullName: 'Полное имя',
+  email: 'Email',
+  password: 'Пароль',
+};
+
+export const FIELD_TYPES = {
+  fullName: 'text',
+  email: 'email',
+  password: 'password',
+};
